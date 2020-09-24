@@ -12,6 +12,7 @@ class TweetCell: UITableViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userNameTag: UILabel!
     @IBOutlet weak var tweetContentLabel: UILabel!
     @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
@@ -86,12 +87,18 @@ class TweetCell: UITableViewCell {
     func enableDarkMode() {
         backgroundColor = UIColor.black
         userNameLabel.textColor = UIColor.white
+        userNameTag.textColor = UIColor.white
         tweetContentLabel.textColor = UIColor.white
     }
     
     func disableDarkMode() {
         backgroundColor = UIColor.white
         userNameLabel.textColor = UIColor.black
+        if #available(iOS 13.0, *) {
+            userNameTag.textColor = UIColor.secondaryLabel
+        } else {
+            userNameTag.textColor = UIColor.lightGray
+        }
         tweetContentLabel.textColor = UIColor.black
     }
 

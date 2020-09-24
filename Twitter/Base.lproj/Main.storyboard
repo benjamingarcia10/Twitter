@@ -71,14 +71,25 @@
                                                 <constraint firstAttribute="width" constant="70" id="z8A-wf-R9r"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0q-s5-goY">
-                                            <rect key="frame" x="94" y="11" width="82" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YmW-Gn-oOK" userLabel="User">
+                                            <rect key="frame" x="94" y="11" width="164.5" height="28"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0q-s5-goY">
+                                                    <rect key="frame" x="0.0" y="3.5" width="81.5" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="@JohnDoe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOl-AT-6BN" userLabel="User Name Tag">
+                                                    <rect key="frame" x="89.5" y="5" width="75" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet content goes here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YE7-VT-aps">
-                                            <rect key="frame" x="94" y="36.5" width="265" height="52.5"/>
+                                            <rect key="frame" x="94" y="39" width="265" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="1dd-kR-rfz"/>
                                             </constraints>
@@ -110,15 +121,15 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="w0q-s5-goY" firstAttribute="top" secondItem="vzc-lV-Ehv" secondAttribute="topMargin" id="09n-Cc-MiP"/>
                                         <constraint firstItem="gbU-fs-y8d" firstAttribute="top" secondItem="vzc-lV-Ehv" secondAttribute="topMargin" id="2IE-zM-7FE"/>
+                                        <constraint firstItem="YmW-Gn-oOK" firstAttribute="leading" secondItem="gbU-fs-y8d" secondAttribute="trailing" constant="8" id="6Zg-wc-K1V"/>
                                         <constraint firstItem="YE7-VT-aps" firstAttribute="trailing" secondItem="vzc-lV-Ehv" secondAttribute="trailingMargin" id="99D-VT-drX"/>
+                                        <constraint firstItem="YE7-VT-aps" firstAttribute="top" secondItem="YmW-Gn-oOK" secondAttribute="bottom" id="BCr-1n-16h"/>
+                                        <constraint firstItem="YmW-Gn-oOK" firstAttribute="top" secondItem="vzc-lV-Ehv" secondAttribute="topMargin" id="EsA-kb-Xqy"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="zdf-YB-1Ky" secondAttribute="trailing" constant="10" id="IuA-nf-FnW"/>
-                                        <constraint firstItem="w0q-s5-goY" firstAttribute="leading" secondItem="gbU-fs-y8d" secondAttribute="trailing" constant="8" id="JJ2-Gm-3gx"/>
                                         <constraint firstItem="gbU-fs-y8d" firstAttribute="leading" secondItem="vzc-lV-Ehv" secondAttribute="leadingMargin" id="Mn0-xy-MEL"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="fDo-Zp-m9Q" secondAttribute="bottom" constant="10" id="a4q-f7-iRi"/>
                                         <constraint firstItem="YE7-VT-aps" firstAttribute="leading" secondItem="gbU-fs-y8d" secondAttribute="trailing" constant="8" id="fSH-u0-MGB"/>
-                                        <constraint firstItem="YE7-VT-aps" firstAttribute="top" secondItem="w0q-s5-goY" secondAttribute="bottom" constant="4" id="hMS-6p-UFi"/>
                                         <constraint firstItem="zdf-YB-1Ky" firstAttribute="leading" secondItem="fDo-Zp-m9Q" secondAttribute="trailing" constant="10" id="sMo-Fn-FWZ"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="zdf-YB-1Ky" secondAttribute="bottom" constant="10" id="v1W-PZ-yG8"/>
                                         <constraint firstItem="zdf-YB-1Ky" firstAttribute="top" secondItem="YE7-VT-aps" secondAttribute="bottom" constant="10" id="vIU-5k-Vk4"/>
@@ -130,6 +141,7 @@
                                     <outlet property="retweetButton" destination="fDo-Zp-m9Q" id="21S-H0-Olf"/>
                                     <outlet property="tweetContentLabel" destination="YE7-VT-aps" id="VOG-kr-a2Y"/>
                                     <outlet property="userNameLabel" destination="w0q-s5-goY" id="G4P-Jp-Q8K"/>
+                                    <outlet property="userNameTag" destination="gOl-AT-6BN" id="hsX-wH-BRy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

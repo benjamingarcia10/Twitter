@@ -133,6 +133,8 @@ class HomeTableViewController: UITableViewController {
         }
         
         cell.userNameLabel.text = user["name"] as! String
+        let userTag = user["screen_name"] as! String
+        cell.userNameTag.text = "@\(userTag)"
         cell.tweetContentLabel.text = tweetArray[indexPath.row]["text"] as! String
         
         if (UserDefaults.standard.bool(forKey: "darkModeEnabled") == true) {
