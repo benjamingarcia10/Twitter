@@ -52,7 +52,7 @@
         <scene sceneID="3gg-LA-6Ua">
             <objects>
                 <tableViewController id="KJ2-ml-6ZN" customClass="HomeTableViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dqy-dZ-Z0g">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dqy-dZ-Z0g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -176,22 +176,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vQ0-wm-icZ">
-                                <rect key="frame" x="0.0" y="44" width="375" height="150"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQ0-wm-icZ">
+                                <rect key="frame" x="15" y="59" width="345" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="6bf-0J-6gF"/>
+                                    <constraint firstAttribute="height" constant="150" id="opA-uz-69m"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZp-8h-kOt" userLabel="Tweet Length Label">
+                                <rect key="frame" x="360" y="219" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="vQ0-wm-icZ" firstAttribute="leading" secondItem="gmb-r3-5nF" secondAttribute="leading" id="1Md-qN-nna"/>
-                            <constraint firstItem="gmb-r3-5nF" firstAttribute="trailing" secondItem="vQ0-wm-icZ" secondAttribute="trailing" id="aA4-is-3eZ"/>
-                            <constraint firstItem="vQ0-wm-icZ" firstAttribute="top" secondItem="gmb-r3-5nF" secondAttribute="top" id="rc0-Oi-fKE"/>
+                            <constraint firstItem="vQ0-wm-icZ" firstAttribute="leading" secondItem="gmb-r3-5nF" secondAttribute="leading" constant="15" id="1Md-qN-nna"/>
+                            <constraint firstItem="gmb-r3-5nF" firstAttribute="trailing" secondItem="lZp-8h-kOt" secondAttribute="trailing" constant="15" id="YXk-V3-qc8"/>
+                            <constraint firstItem="gmb-r3-5nF" firstAttribute="trailing" secondItem="vQ0-wm-icZ" secondAttribute="trailing" constant="15" id="aA4-is-3eZ"/>
+                            <constraint firstItem="vQ0-wm-icZ" firstAttribute="top" secondItem="gmb-r3-5nF" secondAttribute="top" constant="15" id="rc0-Oi-fKE"/>
+                            <constraint firstItem="lZp-8h-kOt" firstAttribute="top" secondItem="vQ0-wm-icZ" secondAttribute="bottom" constant="10" id="zzc-pl-GSp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gmb-r3-5nF"/>
                     </view>
@@ -210,6 +218,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tweetContentHeightConstraint" destination="opA-uz-69m" id="231-9l-Qw7"/>
+                        <outlet property="tweetLengthLabel" destination="lZp-8h-kOt" id="VeJ-Gd-Aw1"/>
                         <outlet property="tweetTextView" destination="vQ0-wm-icZ" id="XUO-U6-i7i"/>
                     </connections>
                 </viewController>
