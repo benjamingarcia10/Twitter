@@ -25,16 +25,24 @@ class HomeTableViewController: UITableViewController {
             disableDarkMode()
         }
         
-        loadTweets()
         myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
         tableView.refreshControl = myRefreshControl
         myRefreshControl.tintColor = UIColor.systemTeal
+        
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 120
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        loadTweets()
     }
     
     @objc func loadTweets() {
@@ -86,7 +94,11 @@ class HomeTableViewController: UITableViewController {
         tableView.backgroundColor = UIColor.black
         tableView.separatorColor = UIColor.white
         tableView.indicatorStyle = UIScrollView.IndicatorStyle.white
-        darkModeButton.title = "Light Mode"
+        if #available(iOS 13.0, *) {
+            darkModeButton.image = UIImage(systemName: "moon.fill")
+        } else {
+            darkModeButton.title = "Light Mode"
+        }
     }
     
     func disableDarkMode() {
@@ -94,7 +106,11 @@ class HomeTableViewController: UITableViewController {
         tableView.backgroundColor = UIColor.white
         tableView.separatorColor = nil
         tableView.indicatorStyle = UIScrollView.IndicatorStyle.default
-        darkModeButton.title = "Dark Mode"
+        if #available(iOS 13.0, *) {
+            darkModeButton.image = UIImage(systemName: "moon")
+        } else {
+            darkModeButton.title = "Dark Mode"
+        }
     }
     
     @IBAction func onLogout(_ sender: Any) {
@@ -124,6 +140,10 @@ class HomeTableViewController: UITableViewController {
         } else if (UserDefaults.standard.bool(forKey: "darkModeEnabled") == false) {
             cell.disableDarkMode()
         }
+        
+        cell.setFavorite(tweetArray[indexPath.row]["favorited"] as! Bool)
+        cell.setRetweet(tweetArray[indexPath.row]["retweeted"] as! Bool)
+        cell.tweetId = tweetArray[indexPath.row]["id"] as! Int
         
         return cell
     }
