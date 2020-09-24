@@ -13,6 +13,7 @@ class HomeTableViewController: UITableViewController {
     var tweetArray = [NSDictionary]()
     var numberOfTweets: Int!
     let myRefreshControl = UIRefreshControl()
+    var darkModeToggled = false
     
     @IBOutlet weak var darkModeButton: UIBarButtonItem!
     
@@ -47,6 +48,7 @@ class HomeTableViewController: UITableViewController {
     
     @objc func loadTweets() {
         let timelineRequestUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+        darkModeToggled = false
         numberOfTweets = 20
         let myParams = ["count": numberOfTweets]
         
@@ -64,6 +66,7 @@ class HomeTableViewController: UITableViewController {
     
     func loadMoreTweets() {
         let timelineRequestUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+        darkModeToggled = false
         numberOfTweets += 20
         let myParams = ["count": numberOfTweets]
         
@@ -79,6 +82,7 @@ class HomeTableViewController: UITableViewController {
     }
     
     @IBAction func toggleDarkMode(_ sender: Any) {
+        darkModeToggled = true
         if (UserDefaults.standard.bool(forKey: "darkModeEnabled") == false) {
             enableDarkMode()
         } else if (UserDefaults.standard.bool(forKey: "darkModeEnabled") == true) {
@@ -143,9 +147,11 @@ class HomeTableViewController: UITableViewController {
             cell.disableDarkMode()
         }
         
-        cell.setFavorite(tweetArray[indexPath.row]["favorited"] as! Bool)
-        cell.setRetweet(tweetArray[indexPath.row]["retweeted"] as! Bool)
-        cell.tweetId = tweetArray[indexPath.row]["id"] as! Int
+        if (!darkModeToggled) {
+            cell.setFavorite(tweetArray[indexPath.row]["favorited"] as! Bool)
+            cell.setRetweet(tweetArray[indexPath.row]["retweeted"] as! Bool)
+            cell.tweetId = tweetArray[indexPath.row]["id"] as! Int
+        }
         
         return cell
     }
